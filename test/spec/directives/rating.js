@@ -5,21 +5,27 @@ describe('Directive: rating', function () {
   // load the directive's module
   beforeEach(module('pageDemoApp'));
 
-  var element,
-    scope, template, controller;
+  var el,
+    scope, controller;
 
-  beforeEach(inject(function ($rootScope, $compile, $httpBackend) {
-    $httpBackend.whenGET("/views/rating.html").respond("");
+  beforeEach(angular.mock.inject(function ($controller, $rootScope, $compile, $httpBackend) {
+
+    $httpBackend.whenGET("/views/rating.html").respond("rating.html");
     $httpBackend.expectGET("/views/rating.html");
-    element = angular.element('<div rating="4.5"></div>');
-    $compile(element)($rootScope.$new());
-    $rootScope.$digest();
-    controller = element.controller();
-    scope = element.isolateScope() || element.scope();
-    console.log(element);
+    el = angular.element('<div rating="4.5"></div>');
+    scope = $rootScope;
+    $compile(el)(scope);
+    controller = el.controller('rating');
+    
+    scope.$digest()
+
+    scope = el.isolateScope() || el.scope();
+    //console.log(scope);
   }));
 
   it('should return true', inject(function () {
+    
+    expect(scope).toBeDefined();
     expect(scope.rated(4)).toBe(true);
     expect(scope.rated(5)).toBe(false);
     expect(scope.half(4)).toBe(true);

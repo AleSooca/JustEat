@@ -16,11 +16,15 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         'dist/scripts/vendor.js',
+        'node_modules/html2js/*.js',
         'app/bower_components/angular-mocks/angular-mocks.js',
         'dist/scripts/scripts.js',
       'test/spec/controllers/*.js',
       'test/spec/directives/*.js',
+      'app/views/*.html'
     ],
+
+
 
 
     // list of files to exclude
@@ -31,6 +35,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        //'app/views/*.html': 'html2js'
     },
 
 
