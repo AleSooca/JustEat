@@ -18,7 +18,8 @@ module.exports = function(config) {
         'dist/scripts/vendor.js',
         'app/bower_components/angular-mocks/angular-mocks.js',
         'dist/scripts/scripts.js',
-      'test/spec/controllers/*.js'
+      'test/spec/controllers/*.js',
+      'test/spec/directives/*.js',
     ],
 
 
